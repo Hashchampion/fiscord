@@ -1,0 +1,225 @@
+/**
+ * Fiskord Chat Specific Styles
+ * Additional chat UI styling
+ */
+
+/* Message animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message {
+    animation: slideIn 0.3s ease;
+}
+
+/* Notification styles */
+.notification {
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    animation: slideIn 0.3s ease;
+}
+
+.notification.info {
+    background-color: rgba(88, 101, 242, 0.1);
+    border-left: 3px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.notification.success {
+    background-color: rgba(67, 181, 129, 0.1);
+    border-left: 3px solid var(--success);
+    color: var(--success);
+}
+
+.notification.error {
+    background-color: rgba(240, 71, 71, 0.1);
+    border-left: 3px solid var(--error);
+    color: var(--error);
+}
+
+.notification.warning {
+    background-color: rgba(250, 166, 26, 0.1);
+    border-left: 3px solid var(--warning);
+    color: var(--warning);
+}
+
+/* Empty state */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-state-text {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Message group styling */
+.message-group {
+    margin-bottom: 16px;
+}
+
+.message-group-author {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.message-group .message-header {
+    display: none;
+}
+
+/* Context menu */
+.context-menu {
+    position: absolute;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-light);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.context-menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.context-menu-item:hover {
+    background-color: var(--surface-light);
+}
+
+.context-menu-item.danger {
+    color: var(--error);
+}
+
+/* Loading state */
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--surface-light);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Status indicators */
+.status-online {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--success);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.status-offline {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text-secondary);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.status-away {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--warning);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.badge.secondary {
+    background-color: var(--text-secondary);
+}
+
+.badge.success {
+    background-color: var(--success);
+}
+
+.badge.error {
+    background-color: var(--error);
+}
+
+/* Code block */
+code {
+    background-color: var(--surface-light);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+pre code {
+    padding: 12px;
+    display: block;
+    overflow-x: auto;
+}
+
+/* Link styling */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Focus visible for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

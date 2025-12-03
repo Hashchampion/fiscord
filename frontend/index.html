@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiskord - LAN Chat Client</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/chat.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="login-container">
+                <div class="login-card">
+                    <h1 class="app-title">Fiskord</h1>
+                    <p class="app-subtitle">LAN Chat Client</p>
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serverAddress">Server Address</label>
+                            <input type="text" id="serverAddress" name="serverAddress" placeholder="localhost:5000" value="localhost:5000">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Connect</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Page -->
+        <div id="chatPage" class="page">
+            <div class="chat-container">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-header">
+                        <h2>Fiskord</h2>
+                        <button id="createServerBtn" class="btn-icon" title="Create Server">+</button>
+                    </div>
+                    
+                    <div class="servers-list">
+                        <h3>Servers</h3>
+                        <ul id="serversList" class="servers">
+                            <!-- Server items will be dynamically added here -->
+                        </ul>
+                    </div>
+
+                    <div class="user-section">
+                        <div class="user-profile">
+                            <span id="currentUsername" class="username">User</span>
+                            <button id="logoutBtn" class="btn-icon" title="Logout">🚪</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Channel Header -->
+                    <header class="channel-header">
+                        <div class="channel-info">
+                            <h2 id="channelName"># general</h2>
+                            <p id="channelMembers" class="members-count">0 members</p>
+                        </div>
+                        <div class="header-actions">
+                            <button id="serverSettingsBtn" class="btn-icon" title="Settings">⚙️</button>
+                        </div>
+                    </header>
+
+                    <!-- Messages Area -->
+                    <div class="messages-container">
+                        <div id="messagesList" class="messages">
+                            <!-- Messages will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div id="typingIndicator" class="typing-indicator">
+                        <span></span><span></span><span></span>
+                        <p><span id="typingUser"></span> is typing...</p>
+                    </div>
+
+                    <!-- Message Input -->
+                    <footer class="message-input-container">
+                        <form id="messageForm" class="message-form">
+                            <input 
+                                type="text" 
+                                id="messageInput" 
+                                class="message-input" 
+                                placeholder="Type a message..."
+                                autocomplete="off"
+                            >
+                            <button type="submit" class="btn btn-send">Send</button>
+                        </form>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for creating server -->
+    <div id="createServerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Server</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="createServerForm" class="modal-form">
+                <div class="form-group">
+                    <label for="newServerName">Server Name</label>
+                    <input type="text" id="newServerName" placeholder="Enter server name" required>
+                </div>
+                <div class="form-group">
+                    <label for="serverDescription">Description</label>
+                    <textarea id="serverDescription" placeholder="Server description (optional)"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Server</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="src/js/api.js"></script>
+    <script src="src/js/socket.js"></script>
+    <script src="src/js/ui.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+</html>
